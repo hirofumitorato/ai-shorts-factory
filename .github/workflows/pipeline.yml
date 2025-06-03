@@ -1,9 +1,9 @@
 name: AI Shorts Factory Pipeline
 
 on:
-  workflow_dispatch:  # 手動実行トリガー（開発用）
+  workflow_dispatch:  # 手動実行トリガー
   schedule:
-    - cron: '0 3 * * *'  # 毎日日本時間12:00に実行（UTC 3:00）
+    - cron: '0 3 * * *'  # 毎日日本時間12:00（UTC 3:00）
 
 jobs:
   build-and-upload:
