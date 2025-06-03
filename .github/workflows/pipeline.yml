@@ -1,0 +1,32 @@
+name: AI Shorts Factory Pipeline
+
+on:
+  workflow_dispatch:  # 手動実行トリガー（開発用）
+  schedule:
+    - cron: '0 3 * * *'  # 毎日日本時間12:00に実行（UTC 3:00）
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      YT_OAUTH_JSON: ${{ secrets.YT_OAUTH_JSON }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run script
+        run: python src/main.py

@@ -1,0 +1,7 @@
+google-auth-oauthlib>=1.2
+google-api-python-client>=2.126
+openai>=1.25
+elevenlabs>=1.0         # 無料枠 TTS
+Pillow                  # 画像加工（簡易版）
+moviepy>=1.0            # 動画合成
+python-dotenv>=1.0      # .env 読み込み（ローカルテスト用）
